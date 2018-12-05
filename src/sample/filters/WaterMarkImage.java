@@ -1,5 +1,9 @@
 package sample.filters;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImagingOpException;
@@ -8,9 +12,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.jhlabs.image.SmearFilter;
-import org.imgscalr.Scalr;
-import org.imgscalr.Scalr.Method;
+
 
 
 public class WaterMarkImage {
@@ -20,17 +22,18 @@ public class WaterMarkImage {
     }
 
 
-    public static void resize(BufferedImage image) {
+   /* public static void resize(BufferedImage image) {
         Scalr.resize(image, Method.QUALITY, 600, Scalr.OP_BRIGHTER);//OP_ANTIALIAS);
-    }
+    }*/
 
 
-    public static BufferedImage watermark(BufferedImage image, String text, int size) throws IOException {
+    public Image watermark(Image img, String text, int size) throws IOException {
+        BufferedImage image = toBufferedImage(img);
         Graphics2D graphics2D = (Graphics2D) image.getGraphics();
         graphics2D.setFont(new Font("Arial", Font.BOLD, size));
         graphics2D.setColor(new Color(0f, 0f, 0f, 0.07f));
         graphics2D.drawString(text, image.getWidth() / 100, image.getHeight() / 4 * 3);
-        return image;
+        return SwingFXUtils.toFXImage(image, null);
     }
 
     public static void apply(BufferedImage img) {
@@ -55,5 +58,11 @@ public class WaterMarkImage {
         ImageIO.write(image, "JPG", new File("C:\\Users\\Alexandra\\IdeaProjects\\labWork3\\res\\img7_t.jpg"));
     }
 
-
+    public static BufferedImage toBufferedImage(Image image) {
+        BufferedImage bimage = new BufferedImage((int) image.getWidth(), (int) image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D bmGr = bimage.createGraphics();
+        bmGr.drawImage(SwingFXUtils.fromFXImage(image, null), 0, 0, null);
+        bmGr.dispose();
+        return bimage;
+    }
 }

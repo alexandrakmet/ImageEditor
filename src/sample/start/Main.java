@@ -21,13 +21,12 @@ public class Main extends Application {
         mainController.setMainStage(primaryStage);
 
         primaryStage.setTitle("Image Editor");
-     // primaryStage.getIcons().add(new Image("file:resources/if_notes_edit_103663.png"));
+        primaryStage.getIcons().add(new Image("file:res/icon.png"));
         primaryStage.setMinHeight(600);
         primaryStage.setMinWidth(1300);
         primaryStage.setScene(new Scene(fxmlMain, 1300, 600));
         primaryStage.show();
 
-        //testData();
     }
 
 
