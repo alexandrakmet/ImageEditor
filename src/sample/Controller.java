@@ -93,7 +93,14 @@ public class Controller {
 
     @FXML
     private void handleOpen(ActionEvent actionEvent) {
+        FileChooser.ExtensionFilter imageFilter
+                = new FileChooser.ExtensionFilter("Image Files", "*.jpg");
+
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(imageFilter);
+        String currentDir = System.getProperty("user.home");
+        fileChooser.setInitialDirectory(new File(currentDir));
+
         String fileName;
         try {
             fileName = fileChooser.showOpenDialog(mainStage).getAbsolutePath();
@@ -110,7 +117,11 @@ public class Controller {
 
     @FXML
     private void handleSave(ActionEvent actionEvent) throws IllegalArgumentException, ImagingOpException, IOException {
+        FileChooser.ExtensionFilter imageFilter
+                = new FileChooser.ExtensionFilter("Image Files", "*.jpg");
+
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(imageFilter);
         String fileName;
 
         try {

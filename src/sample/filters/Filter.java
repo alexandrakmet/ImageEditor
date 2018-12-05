@@ -51,7 +51,9 @@ public class Filter {
 
         if (name.equals("SmearFilter")) {
             SmearFilter smearFilter = new SmearFilter();
-            smearFilter.filter(img, img);
+            for (int i = 0; i < 7; i++) {
+                smearFilter.filter(img, img);
+            }
         }
 
         if (name.equals("NoiseFilter")) {
