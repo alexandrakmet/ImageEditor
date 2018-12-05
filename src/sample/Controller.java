@@ -23,6 +23,7 @@ public class Controller {
 
     private Stage mainStage;
     private Image startImage = new Image("file:res/img7.jpg");
+    private Image beforeWatermark;
 
     @FXML
     private ImageView originalImage;
@@ -70,6 +71,10 @@ public class Controller {
     }
 
 
+    @FXML
+    private void cancelWatermark(ActionEvent actionEvent) {
+        modifiedImage.setImage(beforeWatermark);
+    }
 
     @FXML
     private void applyFilter(ActionEvent actionEvent){
@@ -81,6 +86,7 @@ public class Controller {
 
     @FXML
     private void applyWatermark(ActionEvent actionEvent) throws IOException {
+        beforeWatermark = modifiedImage.getImage();
         WaterMarkImage waterMarkImage = new WaterMarkImage();
         modifiedImage.setImage(waterMarkImage.watermark(modifiedImage.getImage(),text.getText(),Integer.parseInt(size.getText())));
     }

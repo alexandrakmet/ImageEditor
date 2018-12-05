@@ -34,7 +34,7 @@
             <TextField fx:id="size" layoutX="64.0" layoutY="366.0" prefHeight="37.0" prefWidth="132.0" AnchorPane.rightAnchor="5.0" />
             <Label layoutX="18.0" layoutY="374.0" styleClass="label-bright" text="Size" />
             <ComboBox fx:id="comboFilters" layoutX="25.0" layoutY="89.0" prefWidth="150.0" />
-            <Button layoutX="79.0" layoutY="452.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="102.0" text="Cancel" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="20.0" />
+            <Button layoutX="79.0" layoutY="452.0" mnemonicParsing="false" onAction="#cancelWatermark" prefHeight="33.0" prefWidth="102.0" text="Cancel" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="20.0" />
          </children>
       </AnchorPane>
    </right>
